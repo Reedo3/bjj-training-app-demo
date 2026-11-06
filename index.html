@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="color-scheme" content="light dark" />
     <link rel="icon" href="data:," />
-    <title>BJJ Training App — Weekly Build · Oct 30, 2026</title>
+    <title>BJJ Training App — Weekly Build · Nov 6, 2026</title>
     <style>
       :root {
         color-scheme: light dark;
@@ -180,7 +180,7 @@
     </style>
   </head>
   <body>
-    <div class="snapshot-bar"><strong>Weekly build</strong><span class="bar-long">Fri, Oct 30, 2026 · This week’s snapshot of the BJJ Training App for the Discord crew — every feature shipped through this week, running on fixture data so you can test it end to end. The two demo analyses were run in the live app and their outputs are reproduced here; uploads, saves, and deletes don’t run in this snapshot, and the live app’s real data stays private.</span><span class="bar-short">Weekly build · Oct 30, 2026 — fixture data, test it end to end. Nothing saves here.</span></div>
+    <div class="snapshot-bar"><strong>Weekly build</strong><span class="bar-long">Fri, Nov 6, 2026 · This week’s snapshot of the BJJ Training App for the Discord crew — every feature shipped through this week, running on fixture data so you can test it end to end. The two demo analyses were run in the live app and their outputs are reproduced here; uploads, saves, and deletes don’t run in this snapshot, and the live app’s real data stays private.</span><span class="bar-short">Weekly build · Nov 6, 2026 — fixture data, test it end to end. Nothing saves here.</span></div>
     <div class="app-shell">
       <aside class="desktop-rail">
         <div class="rail-mark"><span>MAT</span><strong>01</strong></div>
@@ -423,7 +423,7 @@
             : "<p>No chunks received.</p>";
           var staged = session.stagedAt ? formatBytes(session.stagedBytes || 0) + " at " + new Date(session.stagedAt).toLocaleString() : "No staging attestation";
           var note = (session.status === "begun") ? '<p class="session-note">Open this app on the device that staged the clip to resume automatically.</p>'
-            : (session.status === "pruned") ? '<p class="session-note">Abandoned before any chunks arrived — auto-retired by the 2-day upload-session TTL (shipped this week).</p>' : "";
+            : (session.status === "pruned") ? '<p class="session-note">Abandoned before any chunks arrived — auto-retired by the 2-day upload-session TTL.</p>' : "";
           return '<details class="session-state-row"' + openAttr + "><summary><div><strong>" + esc(session.rollTitle) + "</strong><span>"
             + session.status + " · " + progress + "% · " + formatBytes(session.bytesReceived) + " / " + formatBytes(session.totalBytes)
             + "</span></div><b>" + session.chunksReceived + "/" + session.totalChunks + "</b></summary>"
@@ -440,7 +440,7 @@
         var steps = [
           { id: "log", title: "Log a session", text: "Ten seconds, no typing — pick a session type and save.", go: "Open log" },
           { id: "roll", title: "Open an analyzed roll", text: "A real uploaded clip with its position timeline and one coaching takeaway.", go: "Open roll" },
-          { id: "seek", title: "Scrub the timeline + find occurrences", text: "Tap segments, event markers, and coaching moments to move the playhead — then use the new Occurrence finder to step through every time a position appears across these rolls (Back control: 1 of 3, 2 of 3, 3 of 3).", go: "Open timeline" },
+          { id: "seek", title: "Scrub the timeline + find occurrences", text: "Tap segments, event markers, and coaching moments to move the playhead — then use the Occurrence finder to step through every time a position appears across these rolls (Back control: 1 of 3, 2 of 3, 3 of 3).", go: "Open timeline" },
           { id: "tree", title: "Check your options", text: "Transition Tree ranks what actually happened next from any position in these rolls.", go: "Open tree" },
           { id: "intel", title: "Hit the Roll Intel gate", text: "Patterns and drill picks stay locked — and say exactly why — until 3 rolls are analyzed.", go: "See gate" },
           { id: "lab", title: "Play in the Position Lab", text: "Chain an escape end to end: preset, variables, gated moves, drill card.", go: "Enter lab" }
@@ -454,7 +454,8 @@
 
       function whatsNewHtml() {
         var items = [
-          { when: "Oct 29", title: "Occurrence finder — new in roll detail", text: "Open any analyzed roll and step through every time a position appears across the rolls in this snapshot: pick the position, see “1 of 3”, and use Prev / Next occurrence to jump — across rolls if needed — to each segment start. Counting is segment-based (not event-based), and Prev / Next disable at the ends. Try it: open “Pressure passing rounds”, choose Back control, and step through all 3 occurrences." },
+          { when: "Nov 6", title: "Weekly snapshot refreshed for Discord", text: "Fresh Nov 6 build — same fixture rolls and demo analyses, re-checked end to end for this week’s Discord drop. Start with the 6-step walkthrough above: log a session, open an analyzed roll, scrub its timeline, step Occurrences, check the Transition Tree, hit the Roll Intel gate, then chain a scenario in the Position Lab. Nothing here saves or uploads — it’s a safe copy to click through." },
+          { when: "Oct 29", title: "Occurrence finder in roll detail", text: "Open any analyzed roll and step through every time a position appears across the rolls in this snapshot: pick the position, see “1 of 3”, and use Prev / Next occurrence to jump — across rolls if needed — to each segment start. Counting is segment-based (not event-based), and Prev / Next disable at the ends. Try it: open “Pressure passing rounds”, choose Back control, and step through all 3 occurrences." },
           { when: "Oct 25", title: "Graph engine under the Transition Tree", text: "The transition counts behind the tree now come from a dedicated graph aggregation layer (position → next-position edges built from the detected timelines, 29 tests green when it shipped). Same tree, same numbers — now computed by one tested engine instead of ad-hoc counting." },
           { when: "Oct 22", title: "Position Lab", text: "Interactive 2D sandbox: 18 position presets, a variable-gated transition graph (the elbow escape really does need the underhook first), a scenario builder that rejects illegal chains, and drill cards pulled from your own rolls." },
           { when: "Oct 21", title: "Transition Tree", text: "From any position, your options ranked by what your rolls actually did next — counts and shares recomputed live from the film-room timelines, nothing invented." },
@@ -464,7 +465,7 @@
         var rows = items.map(function (item) {
           return '<div class="news-row"><time>' + item.when + "</time><div><h3>" + item.title + "</h3><p>" + item.text + "</p></div></div>";
         }).join("");
-        return '<section class="release-block" aria-labelledby="news-title"><div class="rule"><span id="news-title">What’s new this week</span><span>Build 2026.10.30</span></div><div>' + rows + "</div></section>";
+        return '<section class="release-block" aria-labelledby="news-title"><div class="rule"><span id="news-title">What’s new this week</span><span>Build 2026.11.06</span></div><div>' + rows + "</div></section>";
       }
 
       function filmRoomHtml() {
@@ -580,7 +581,7 @@
             + '<button data-occ-step="1"' + (idx >= occ.length - 1 ? " disabled" : "") + '>Next occurrence ›</button></div>'
             + '<p class="occurrence-empty">Segment-based counting: each separate segment of ' + esc(pos) + ' across these rolls counts once, no matter how many events happened inside it. Stepping jumps to that segment’s start — in another roll if that is where it happened.</p>';
         }
-        return '<div class="occurrence-box"><div class="rule"><span>Occurrence finder · new Oct 29</span><span>' + occ.length + (occ.length === 1 ? " occurrence" : " occurrences") + '</span></div><div class="choice-row tree-positions">' + chips + "</div>" + body + "</div>";
+        return '<div class="occurrence-box"><div class="rule"><span>Occurrence finder</span><span>' + occ.length + (occ.length === 1 ? " occurrence" : " occurrences") + '</span></div><div class="choice-row tree-positions">' + chips + "</div>" + body + "</div>";
       }
 
       function coachingHtml(roll) {
